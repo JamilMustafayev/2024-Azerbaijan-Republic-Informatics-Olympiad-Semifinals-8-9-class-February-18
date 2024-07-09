@@ -1,0 +1,27 @@
+def smallest_value(x, k):
+    if x == 0:
+        return 0
+    if k == 0:
+        return x
+
+    if x >= k:
+            
+        x = x % k
+
+  
+    return min(x, abs(x - k))
+
+# Example usage:
+x1, k1 = map(int, input().split())
+
+
+print(smallest_value(x1, k1))
+
+
+
+
+
+
+
+
+

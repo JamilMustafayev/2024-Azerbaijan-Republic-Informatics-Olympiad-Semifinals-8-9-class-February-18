@@ -1,0 +1,31 @@
+def sum_of_neighbors(n, k):
+    row = k // n
+    col = k % n
+   
+    neighbors = []
+   
+    if row > 0:
+        neighbors.append(k - n)
+   
+   
+    if row < n - 1:
+        neighbors.append(k + n)
+   
+
+
+    if col > 0:
+        neighbors.append(k - 1)
+   
+ 
+    if col < n - 1:
+        neighbors.append(k + 1)
+   
+    return sum(neighbors)
+
+
+n,k1=map(int, input().split())
+
+
+
+
+print(sum_of_neighbors(n, k1))

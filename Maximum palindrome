@@ -1,0 +1,47 @@
+def largest_lexicographical_palindrome(s, k):
+    n = len(s)
+    s = list(s)
+    changes = [0] * n
+   
+   
+    left = 0
+    right = n - 1
+    while left < right:
+        if s[left] != s[right]:
+            larger_char = max(s[left], s[right])
+            s[left] = s[right] = larger_char
+            changes[left] = changes[right] = 1
+            k -= 1
+        left += 1
+        right -= 1
+
+
+    if k < 0:
+        return ":("
+
+
+ 
+    left = 0
+    right = n - 1
+    while left <= right:
+        if left == right:  
+            if k > 0:
+                s[left] = 'z'
+        else:
+            if s[left] != 'z':
+                if changes[left] == 1 and k >= 1:
+                    s[left] = s[right] = 'z'
+                    k -= 1
+                elif changes[left] == 0 and k >= 2:
+                    s[left] = s[right] = 'z'
+                    k -= 2
+        left += 1
+        right -= 1
+
+
+    return "".join(s)
+
+
+s=input()
+n=int(input())
+print(largest_lexicographical_palindrome(s,n))  
